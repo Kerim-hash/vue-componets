@@ -1,18 +1,25 @@
 <template>
   <div class="home">
     <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <div class="blog-card-wrap">
+      <div class="blog-cards">
+      <BlogCards :blog="blog" v-for="(blog, index) in blogs" :key="index" />
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
 
+import BlogCards from '../components/blogCard.vue'
 export default {
-  name: 'Home',
-  components: {
-    HelloWorld
-  }
+    components: {BlogCards},
+    computed : {
+      blogs(){
+        return this.$store.state.blogs.blogs
+      }
+    }
 }
+
 </script>

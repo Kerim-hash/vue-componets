@@ -1,12 +1,28 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+    <toast position="ne"></toast>
+    <headerBar />
+    <div class="container">
+      <router-view />
     </div>
-    <router-view/>
   </div>
 </template>
+
+
+<script>
+import { Toast } from "vuex-toast";
+import headerBar from "./components/header.vue";
+export default {
+  data: function () {
+    return {
+      text: "This is toast 232323message",
+      position: "ne",
+      type: "info",
+    };
+  },
+  components: {headerBar,  Toast, },
+};
+</script>
 
 <style>
 #app {
@@ -17,16 +33,10 @@
   color: #2c3e50;
 }
 
-#nav {
-  padding: 30px;
-}
 
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
+.container {
+  max-width: 1160px;
+  padding: 0 15px;
+  margin: 0 auto;
 }
 </style>
