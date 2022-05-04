@@ -46,7 +46,8 @@ export default {
   },
   computed: {
     usersSort() {
-      return this.users && this.users.sort((a, b) => {
+      // eslint-disable-next-line vue/no-side-effects-in-computed-properties
+      return  this.users.sort((a, b) => {
         let mod = 1;
         if(this.currentSortDir === 'desc') mod = -1;
         if(a[this.currentSort] < b[this.currentSort]) return -1 * mod
